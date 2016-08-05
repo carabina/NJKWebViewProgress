@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "NJKWebViewProgress"
+  s.name         = "RHNJKWebViewProgress"
   s.version      = "0.2.4"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      = "UIWebView progress interface."
