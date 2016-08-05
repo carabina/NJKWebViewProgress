@@ -93,7 +93,11 @@ const float NJKFinalProgressValue = 0.9f;
     BOOL isFragmentJump = NO;
     if (request.URL.fragment) {
         NSString *nonFragmentURL = [request.URL.absoluteString stringByReplacingOccurrencesOfString:[@"#" stringByAppendingString:request.URL.fragment] withString:@""];
-        isFragmentJump = [nonFragmentURL isEqualToString:webView.request.URL.absoluteString];
+        NSString *webViewRequestURL = webView.request.URL.absoluteString;
+        if (!webViewRequestURL || webViewRequestURL.length == 0) {
+            webViewRequestURL = [webView stringByEvaluatingJavaScriptFromString:@"window.location.href"];
+        }
+        isFragmentJump = [nonFragmentURL isEqualToString:webViewRequestURL];
     }
 
     BOOL isTopLevelNavigation = [request.mainDocumentURL isEqual:request.URL];
